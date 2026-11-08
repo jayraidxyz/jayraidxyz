@@ -1,5 +1,11 @@
 {
+  "/icon.svg/route": "app/icon.svg/route.js",
+  "/sitemap.xml/route": "app/sitemap.xml/route.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/robots.txt/route": "app/robots.txt/route.js",
+  "/opengraph-image/route": "app/opengraph-image/route.js",
+  "/twitter-image/route": "app/twitter-image/route.js",
+  "/api/subscribe/route": "app/api/subscribe/route.js",
   "/page": "app/page.js",
-  "/resources/page": "app/resources/page.js",
-  "/icon.svg/route": "app/icon.svg/route.js"
+  "/resources/page": "app/resources/page.js"
 }
