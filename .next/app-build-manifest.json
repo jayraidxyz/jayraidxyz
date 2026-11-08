@@ -7,12 +7,12 @@
       "static/chunks/main-app-8caae5393621fe49.js",
       "static/chunks/app/_not-found/page-d5ed90083274928b.js"
     ],
-    "/sitemap.xml/route": [
+    "/api/subscribe/route": [
       "static/chunks/webpack-1c1ba7a5052c6f78.js",
       "static/chunks/4bd1b696-c023c6e3521b1417.js",
       "static/chunks/255-73938ce8a8eac1ad.js",
       "static/chunks/main-app-8caae5393621fe49.js",
-      "static/chunks/app/sitemap.xml/route-d5ed90083274928b.js"
+      "static/chunks/app/api/subscribe/route-d5ed90083274928b.js"
     ],
     "/not-found": [
       "static/chunks/webpack-1c1ba7a5052c6f78.js",
@@ -51,12 +51,12 @@
       "static/chunks/main-app-8caae5393621fe49.js",
       "static/chunks/app/twitter-image/route-d5ed90083274928b.js"
     ],
-    "/api/subscribe/route": [
+    "/sitemap.xml/route": [
       "static/chunks/webpack-1c1ba7a5052c6f78.js",
       "static/chunks/4bd1b696-c023c6e3521b1417.js",
       "static/chunks/255-73938ce8a8eac1ad.js",
       "static/chunks/main-app-8caae5393621fe49.js",
-      "static/chunks/app/api/subscribe/route-d5ed90083274928b.js"
+      "static/chunks/app/sitemap.xml/route-d5ed90083274928b.js"
     ],
     "/page": [
       "static/chunks/webpack-1c1ba7a5052c6f78.js",
