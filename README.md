@@ -1,70 +1,90 @@
-# Getting Started with Create React App
+<div align="center">
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# `</>` jayraidxyz
 
-## Available Scripts
+**Web + mobile developer. Learning Web3 in public.**
 
-In the project directory, you can run:
+*Testnet first. No hype.*
 
-### `npm start`
+[![Website](https://img.shields.io/badge/site-jayraidxyz.github.io-4F5BFF?style=for-the-badge)](https://jayraidxyz.github.io/jayraidxyz)
+[![YouTube](https://img.shields.io/badge/YouTube-jayraidxyz-38DCFF?style=for-the-badge&logo=youtube&logoColor=0B0E14)](https://youtube.com/@jayraidxyz)
+[![Next.js](https://img.shields.io/badge/Next.js-15-0B0E14?style=for-the-badge&logo=nextdotjs)](https://nextjs.org)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+</div>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 👋 Hey, I'm Jay
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+I'm a self-taught full-stack developer building web apps with **Next.js** and mobile apps with **React Native**. I'm the founder of **[PayHold](https://payhold.vercel.app)**, and I share what I learn about **Web3 x Dev** as I go: carousels, illustrations and videos, all under the *building in public* banner.
 
-### `npm run build`
+No gurus, no moon talk. I try things on testnets, break them, and write down what actually happened.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🔭 What I'm up to
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- 🧱 Building **PayHold**
+- 🎥 Making Web3 x Dev content on [YouTube](https://youtube.com/@jayraidxyz) and socials
+- 🧪 Learning Web3 the safe way: **devnet / testnet first**, test wallets only
+- 📱 Shipping web and mobile apps side by side
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🛠️ Stack
 
-### `npm run eject`
+![Next.js](https://img.shields.io/badge/Next.js-000?style=flat-square&logo=nextdotjs)
+![React](https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB)
+![React Native](https://img.shields.io/badge/React_Native-20232A?style=flat-square&logo=react&logoColor=61DAFB)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=000)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=nodedotjs&logoColor=fff)
+![Vercel](https://img.shields.io/badge/Vercel-000?style=flat-square&logo=vercel)
+![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=flat-square&logo=githubactions&logoColor=fff)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 🌐 About this repo
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+This repo is named after my username, so it does two jobs: its README is the one on my GitHub profile, and the code in it is my **personal site**.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- **Framework:** Next.js 15 (App Router), static export
+- **Hosting:** GitHub Pages, deployed by GitHub Actions on every push to `main`
+- **Extras:** generated `sitemap.xml`, `robots.txt` and a dynamic Open Graph image (the coin mascot)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Run it locally
 
-## Learn More
+```bash
+git clone https://github.com/jayraidxyz/jayraidxyz.git
+cd jayraidxyz
+npm install
+npm run dev
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Open [http://localhost:3000](http://localhost:3000).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Build the same way CI does
 
-### Code Splitting
+```bash
+GITHUB_PAGES=true npm run build
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+The `GITHUB_PAGES` flag switches on static export and the repo `basePath`, so what you see locally matches what gets deployed.
 
-### Analyzing the Bundle Size
+### Project structure
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```
+app/            routes, layout, sitemap, robots, opengraph-image
+components/     UI pieces
+data/site.js    site copy and handles
+lib/siteUrl.js  base URL helper (handles the GitHub Pages path)
+public/         static assets
+.github/        Actions workflow for Pages deploys
+```
 
-### Making a Progressive Web App
+## 📬 Find me
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- 🎥 YouTube: [@jayraidxyz](https://youtube.com/@jayraidxyz)
+- 🐦 X / Twitter: [@jayraidxyz](https://x.com/jayraidxyz)
+- 🌐 Site: [jayraidxyz.github.io/jayraidxyz](https://jayraidxyz.github.io/jayraidxyz)
 
-### Advanced Configuration
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+<div align="center">
 
-### Deployment
+*Building in public. Testnet first.* `</>`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+</div>
