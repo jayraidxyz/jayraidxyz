@@ -1,11 +1,11 @@
 {
+  "/_not-found/page": "/_not-found",
   "/api/subscribe/route": "/api/subscribe",
   "/icon.svg/route": "/icon.svg",
-  "/_not-found/page": "/_not-found",
-  "/robots.txt/route": "/robots.txt",
+  "/sitemap.xml/route": "/sitemap.xml",
   "/opengraph-image/route": "/opengraph-image",
   "/twitter-image/route": "/twitter-image",
-  "/sitemap.xml/route": "/sitemap.xml",
+  "/robots.txt/route": "/robots.txt",
   "/page": "/",
   "/resources/page": "/resources"
 }

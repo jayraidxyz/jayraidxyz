@@ -1,6 +1,8 @@
 import { ImageResponse } from "next/og";
 import { site } from "@/data/site";
 
+export const dynamic = "force-static";
+
 export const alt = `${site.handle}: web + mobile developer, learning Web3 in public`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
