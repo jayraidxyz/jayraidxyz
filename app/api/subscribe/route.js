@@ -29,31 +29,13 @@ export async function POST(req) {
     try {
       const res = await fetch(hook, {
         method: "POST",
-        // Apps Script web apps cannot read request headers, so the optional
-        // shared secret travels in the JSON body (Zapier/Make simply ignore it).
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email,
-          source: "jayraidxyz-site",
-          createdAt: new Date().toISOString(),
-          ...(process.env.SUBSCRIBE_WEBHOOK_SECRET && { secret: process.env.SUBSCRIBE_WEBHOOK_SECRET }),
-        }),
-        redirect: "follow",
+        body: JSON.stringify({ email, source: "jayraidxyz-site" }),
       });
       if (!res.ok) return NextResponse.json({ error: "Upstream error" }, { status: 502 });
-      // Apps Script answers 200 even on failure; it reports errors as { ok: false }.
-      const data = await res.json().catch(() => null);
-      if (data && data.ok === false) {
-        console.error("[subscribe] upstream rejected:", data.error);
-        return NextResponse.json({ error: "Upstream error" }, { status: 502 });
-      }
     } catch {
       return NextResponse.json({ error: "Upstream error" }, { status: 502 });
     }
-  } else if (process.env.NODE_ENV === "production") {
-    // Fail loudly so a missing env var never silently drops leads.
-    console.error("[subscribe] SUBSCRIBE_WEBHOOK_URL is not set, email NOT stored");
-    return NextResponse.json({ error: "Not configured" }, { status: 503 });
   } else {
     console.log("[subscribe] no provider connected, email NOT stored:", email);
   }

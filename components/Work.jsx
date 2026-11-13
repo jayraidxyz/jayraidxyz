@@ -5,7 +5,7 @@ export default function Work() {
   return (
     <section id="work" className="mx-auto max-w-6xl px-5 py-20">
       <SectionHead kicker="01 · WORK" title="Things I've built">
-        Products I've shipped and am building, in public. Case studies are on the way.
+        Real products and builds in public. Each one gets a short case study: the problem, what I built, and the result.
       </SectionHead>
 
       <div className="grid gap-5 md:grid-cols-3">
@@ -26,13 +26,15 @@ export default function Work() {
               ))}
             </ul>
 
-            {p.href ? (
-              <div className="mt-6 text-sm">
+            <div className="mt-6 text-sm">
+              {p.href ? (
                 <a href={p.href} className="font-medium text-cyan hover:underline" target="_blank" rel="noreferrer">
                   View project →
                 </a>
-              </div>
-            ) : null}
+              ) : (
+                <span className="text-muted">Case study coming soon</span>
+              )}
+            </div>
           </article>
         ))}
       </div>

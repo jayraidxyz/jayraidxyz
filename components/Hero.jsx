@@ -54,7 +54,7 @@ export default function Hero() {
           </div>
 
           <ul className="mt-10 flex flex-wrap gap-2 font-mono text-xs text-muted">
-            {["Next.js", "React Native", "Solana", "Rust + Anchor"].map((t) => (
+            {["Next.js", "React Native", "Solana", "Solidity basics"].map((t) => (
               <li key={t} className="rounded-md border border-white/10 bg-white/[0.03] px-3 py-1.5">
                 {t}
               </li>

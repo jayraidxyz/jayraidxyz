@@ -11,8 +11,8 @@ export const site = {
   heroLine2: "Learning Web3 in public.",
   sub: "Self-taught full-stack dev and founder of PayHold. Testnet-first, no hype.",
 
-  // Temporary dedicated address. Swap for one on your own domain once you have it.
-  email: "jayraidxyz@gmail.com",
+  // TODO: use a public contact email on your own domain (not your personal inbox).
+  email: "hello@example.com",
 
   // Optional looping hero background. Put an .mp4 in /public and set it here,
   // for example "/hero.mp4". Keep it under ~8 MB. Leave null for a plain dark hero.
@@ -21,14 +21,14 @@ export const site = {
   // TODO: check each link points to your real account.
   socials: [
     { label: "X", href: "https://x.com/jayraidxyz" },
-    { label: "TikTok", href: "https://www.tiktok.com/@jayraidsxyz" },
+    { label: "TikTok", href: "https://www.tiktok.com/@jayraidxyz" },
     { label: "Instagram", href: "https://www.instagram.com/jayraidxyz" },
   ],
 
-  // Free download (the PDF lives in /public/notes)
+  // Free download (served by an authenticated route)
   notes: {
     title: "Blockchain Dev and Memecoin Fundamentals",
-    file: "/notes/Blockchain_Dev_Memecoin_Lecture_Notes.pdf",
+    file: "/api/notes/download",
     blurb:
       "63 pages of lecture notes from beginner to intermediate: labs on testnet, quizzes, and a 30-day content plan. Free.",
   },
@@ -37,24 +37,24 @@ export const site = {
 // TODO: replace the descriptions with your own wording. Add a `href` to show a link.
 export const projects = [
   {
-    name: "PayHold Web App",
-    tag: "Founder project · Waitlist open",
-    text: "Escrow infrastructure for African commerce. An 11-state escrow engine with an immutable ledger, Paystack payments, and a waitlist-first launch.",
-    stack: ["Next.js", "NestJS", "PostgreSQL", "Paystack"],
-    href: "https://payhold.vercel.app",
-  },
-  {
-    name: "PayHold Mobile App",
+    name: "PayHold",
     tag: "Founder project",
-    text: "The PayHold escrow experience on iOS and Android: create and track protected transactions from one dashboard.",
-    stack: ["React Native", "Expo", "TypeScript"],
+    text: "A fintech platform built around escrow, with delivery and real estate use cases.",
+    stack: ["Next.js", "React Native", "Payments"],
     href: null,
   },
   {
-    name: "NSUK SPGS Management System",
-    tag: "Client project",
-    text: "Management system for the School of Postgraduate Studies, NSUK: student admissions, registration and academic records, with secure authentication and admin controls.",
-    stack: ["Next.js", "Node.js", "PostgreSQL", "Prisma", "Tailwind"],
+    name: "CasualCrave",
+    tag: "Early access",
+    text: "A mood-powered discovery platform, now in early access.",
+    stack: ["Next.js", "Mobile"],
+    href: null,
+  },
+  {
+    name: "Token Due-Diligence Dashboard",
+    tag: "In progress",
+    text: "A read-only Solana tool that checks a token's authorities and top holders. Built in public.",
+    stack: ["Next.js", "Solana", "web3.js"],
     href: null,
   },
 ];

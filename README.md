@@ -56,6 +56,10 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
+### Google sign-in
+
+The resources library and notes PDF require a Google account. Copy `.env.example` to `.env.local`, set `AUTH_SECRET`, `AUTH_GOOGLE_ID`, and `AUTH_GOOGLE_SECRET` from a Google OAuth client, and optionally set `AUTH_ALLOWED_EMAILS` to a comma-separated email allowlist. Add the redirect URIs listed in the example to the Google client. Auth.js requires a server-capable Next.js host; GitHub Pages static hosting cannot run the sign-in routes or protect the resources.
+
 ### Build the same way CI does
 
 ```bash

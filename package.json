@@ -11,9 +11,9 @@
     "@fontsource/jetbrains-mono": "^5.1.0",
     "@fontsource/outfit": "^5.1.0",
     "next": "^15.0.0",
+    "next-auth": "^5.0.0-beta.32",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "vercel": "^65.12.1"
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",

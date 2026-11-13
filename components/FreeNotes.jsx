@@ -86,7 +86,7 @@ export default function FreeNotes() {
                   That didn't work. Check the email address and try again.
                 </p>
               ) : null}
-              <p className="mt-4 text-xs text-muted">No spam. I only email when there's something worth sharing.</p>
+              <p className="mt-4 text-xs text-muted">No spam. Unsubscribe any time.</p>
             </form>
           )}
         </div>
