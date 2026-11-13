@@ -1,5 +1,12 @@
 {
+  "/api/subscribe/route": "app/api/subscribe/route.js",
+  "/icon.svg/route": "app/icon.svg/route.js",
+  "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
+  "/api/notes/download/route": "app/api/notes/download/route.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/library/[slug]/page": "app/library/[slug]/page.js",
   "/page": "app/page.js",
   "/signin/page": "app/signin/page.js",
+  "/privacy/page": "app/privacy/page.js",
   "/resources/page": "app/resources/page.js"
 }
