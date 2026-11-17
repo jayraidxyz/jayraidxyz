@@ -2,27 +2,35 @@
 
 import { useMemo, useState } from "react";
 import PostCard from "./PostCard";
+import { useFirebase } from "@/components/FirebaseProvider";
 
-const FILTERS = ["All", "Explainer", "Carousel", "Reel"];
+const BASE_FILTERS = ["All", "Explainer", "Carousel", "Reel"];
 
 export default function LibraryGrid({ posts }) {
+  const { user, progressMap } = useFirebase();
   const [type, setType] = useState("All");
   const [q, setQ] = useState("");
+
+  const filters = user ? [...BASE_FILTERS, "Saved"] : BASE_FILTERS;
 
   const shown = useMemo(() => {
     const s = q.trim().toLowerCase();
     return posts.filter((p) => {
-      if (type !== "All" && p.type !== type) return false;
+      if (type === "Saved") {
+        if (!progressMap[p.slug]?.bookmarked) return false;
+      } else if (type !== "All" && p.type !== type) {
+        return false;
+      }
       if (!s) return true;
       return (p.title + " " + p.summary + " " + p.tags.join(" ")).toLowerCase().includes(s);
     });
-  }, [posts, type, q]);
+  }, [posts, type, q, progressMap]);
 
   return (
     <div>
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div role="tablist" aria-label="Filter by type" className="flex flex-wrap gap-2">
-          {FILTERS.map((f) => {
+          {filters.map((f) => {
             const on = f === type;
             return (
               <button
@@ -36,7 +44,7 @@ export default function LibraryGrid({ posts }) {
                     : "border-white/15 text-muted hover:border-cyan hover:text-white"
                 }`}
               >
-                {f === "All" ? "All" : f + "s"}
+                {f === "All" || f === "Saved" ? f : f + "s"}
               </button>
             );
           })}
@@ -56,7 +64,7 @@ export default function LibraryGrid({ posts }) {
       {shown.length ? (
         <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {shown.map((p, i) => (
-            <PostCard key={p.slug} post={p} priority={i < 3} />
+            <PostCard key={p.slug} post={p} priority={i < 3} progress={progressMap[p.slug]} />
           ))}
         </div>
       ) : (

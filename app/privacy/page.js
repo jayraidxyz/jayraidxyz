@@ -53,25 +53,27 @@ export default function PrivacyPage() {
 
           <Section title="What I collect">
             <p>
-              <strong className="text-white">Google sign-in (Resources page).</strong> To open the Resources page you sign in
-              with Google. I receive your name, email address and profile picture from Google. I do not receive your Google
-              password, contacts, Drive files or any other Google data.
+              <strong className="text-white">Google sign-in (Resources library).</strong> To access the Resources page
+              and Watch &amp; Read posts you sign in with Google via Firebase Authentication. I receive your name, email
+              address, and profile picture from Google, and save your bookmarks, lesson progress, and study notes in
+              Firestore under your account. I do not receive your Google password, contacts, Drive files, or any other
+              Google data.
             </p>
             <p>
               <strong className="text-white">Free notes sign-up.</strong> If you request the free PDF, I collect the email
               address you enter.
             </p>
             <p>
-              <strong className="text-white">Technical data.</strong> My hosting provider (Vercel) may process standard
-              request data such as IP address, browser type and pages requested, for security and operation of the service.
+              <strong className="text-white">Technical data.</strong> My hosting provider may process standard request
+              data such as IP address, browser type and pages requested, for security and operation of the service.
             </p>
           </Section>
 
           <Section title="How I use it">
             <List
               items={[
-                "To confirm you are signed in and keep the Resources page available to signed-in visitors",
-                "To restrict access to approved accounts, where an allow-list is enabled",
+                "To authenticate you and keep the Resources library restricted to signed-in visitors",
+                "To save and sync your bookmarks, completed lessons, and personal study notes",
                 "To send you the free notes and, if you opted in, occasional updates about new content",
                 "To keep the site secure and working",
               ]}
@@ -79,47 +81,37 @@ export default function PrivacyPage() {
             <p>I do not sell your data, and I do not use it for advertising or profiling.</p>
           </Section>
 
-          <Section title="Cookies and sessions">
+          <Section title="Sessions and storage">
             <p>
-              Signing in sets a secure, encrypted session cookie (and short-lived cookies used during the Google login flow).
-              These are strictly necessary for authentication. Your session data is stored in the cookie itself, not in a
-              database on my side. This site does not use advertising or third-party analytics cookies.
+              Signing in via Firebase Authentication stores your session locally in your browser so you stay signed in
+              across visits. Your saved bookmarks, lesson progress, and study notes are stored privately under your user
+              record in Cloud Firestore. This site does not use advertising or third-party analytics cookies.
             </p>
           </Section>
 
           <Section title="Who I share data with">
             <List
               items={[
-                "Google: to authenticate you. Their handling of your data is covered by Google's Privacy Policy.",
-                "Vercel: hosting and infrastructure.",
+                "Google & Firebase: to authenticate you and store your account profile and learning progress.",
+                "My hosting provider: infrastructure and request delivery.",
                 "My email provider or automation tool: receives the email address you submit for the free notes, so I can deliver and send updates.",
               ]}
             />
             <p>I may disclose data if required by law.</p>
           </Section>
 
-          <Section title="Google API data">
-            <p>
-              The site's use of information received from Google is limited to authenticating you and displaying your
-              email on the Resources page. It is not used for advertising, not transferred to third parties except as needed
-              to provide the service, and not used to train AI models.
-            </p>
-          </Section>
-
           <Section title="Retention">
             <p>
-              Session cookies expire automatically or when you sign out. Email addresses submitted for the free notes are
-              kept until you unsubscribe or ask me to delete them. Hosting logs are kept by Vercel under its own retention
-              rules.
+              Your account profile and study progress stay in Firestore until you request deletion. Email addresses
+              submitted for the free notes are kept until you unsubscribe or ask me to delete them.
             </p>
           </Section>
 
           <Section title="Your rights and choices">
             <p>
-              You can sign out at any time, unsubscribe from any email, and ask me to access, correct or delete your data.
-              You can also revoke this site's access from your Google Account under Security, then Third-party apps with
-              account access. Depending on where you live (including Nigeria under the NDPA, and the UK/EU under GDPR), you
-              may have additional legal rights. Contact me and I will respond promptly.
+              You can sign out at any time from your profile menu, unsubscribe from any email, and ask me to access,
+              correct or delete your data. Depending on where you live (including Nigeria under the NDPA, and the UK/EU
+              under GDPR), you may have additional legal rights. Contact me and I will respond promptly.
             </p>
           </Section>
 

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { formatDate, typeColors } from "@/data/library";
 
-export default function PostCard({ post, priority = false }) {
+export default function PostCard({ post, priority = false, progress = null }) {
   const ratio = post.aspect === "9/16" ? "aspect-[9/16]" : "aspect-[4/5]";
   return (
     <article className="group relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] transition duration-300 hover:-translate-y-1 hover:border-cyan/50 hover:bg-white/[0.05]">
@@ -36,6 +36,8 @@ export default function PostCard({ post, priority = false }) {
       <div className="flex flex-1 flex-col p-5">
         <p className="font-mono text-[11px] text-muted">
           {formatDate(post.date)} · {post.readMinutes} min read
+          {progress?.bookmarked ? <span className="text-cyan"> · Saved</span> : null}
+          {progress?.completed ? <span className="text-white/90"> · Completed</span> : null}
         </p>
         <h3 className="mt-2 text-xl font-bold leading-snug">{post.title}</h3>
         <p className="mt-2 flex-1 text-[15px] leading-relaxed text-muted">{post.summary}</p>

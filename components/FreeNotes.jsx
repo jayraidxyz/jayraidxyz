@@ -2,8 +2,13 @@
 
 import { useState } from "react";
 import { site } from "@/data/site";
+import { useFirebase } from "@/components/FirebaseProvider";
+import { useToast } from "@/components/ToastProvider";
+import { isNetworkError } from "@/lib/firebaseErrors";
 
 export default function FreeNotes() {
+  const { user, markNotesRequested } = useFirebase();
+  const toast = useToast();
   const [email, setEmail] = useState("");
   const [company, setCompany] = useState(""); // honeypot, real people leave it empty
   const [state, setState] = useState("idle"); // idle | loading | done | error
@@ -17,10 +22,23 @@ export default function FreeNotes() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, company }),
       });
-      if (!res.ok) throw new Error("bad response");
+      if (!res.ok) throw new Error(`Request failed (${res.status})`);
+      if (user) {
+        markNotesRequested().catch(() => {});
+      }
       setState("done");
-    } catch {
+    } catch (error) {
       setState("error");
+      if (isNetworkError(error)) {
+        toast.network("Network error while sending your notes request. Check your connection and try again.", {
+          id: "subscribe-error",
+        });
+      } else {
+        toast.error("Could not process your request. Check your email address and try again.", {
+          id: "subscribe-error",
+          title: "Request failed",
+        });
+      }
     }
   }
 

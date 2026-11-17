@@ -5,6 +5,8 @@ import "@fontsource/jetbrains-mono/500.css";
 import "@fontsource/jetbrains-mono/700.css";
 import "./globals.css";
 import { site } from "@/data/site";
+import ToastProvider from "@/components/ToastProvider";
+import FirebaseProvider from "@/components/FirebaseProvider";
 
 export const metadata = {
   // Set NEXT_PUBLIC_SITE_URL (for example https://jayraidxyz.com) so share previews use absolute URLs.
@@ -25,7 +27,11 @@ export const viewport = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="bg-ink font-sans text-white antialiased">{children}</body>
+      <body className="bg-ink font-sans text-white antialiased">
+        <ToastProvider>
+          <FirebaseProvider>{children}</FirebaseProvider>
+        </ToastProvider>
+      </body>
     </html>
   );
 }

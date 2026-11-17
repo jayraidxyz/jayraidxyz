@@ -24,8 +24,11 @@ export const site = {
     { label: "TikTok", href: "https://www.tiktok.com/@jayraidxyz" },
     { label: "Instagram", href: "https://www.instagram.com/jayraidxyz" },
   ],
+  xFollowHref: "https://x.com/intent/follow?screen_name=jayraidxyz",
 
-  // Free download (served by an authenticated route)
+  github: "https://github.com/jayraidxyz",
+
+  // Free download
   notes: {
     title: "Blockchain Dev and Memecoin Fundamentals",
     file: "/api/notes/download",
@@ -34,46 +37,55 @@ export const site = {
   },
 };
 
-// TODO: replace the descriptions with your own wording. Add a `href` to show a link.
 export const projects = [
   {
+    slug: "payhold",
     name: "PayHold",
     tag: "Founder project",
     text: "A fintech platform built around escrow, with delivery and real estate use cases.",
     stack: ["Next.js", "React Native", "Payments"],
-    href: null,
+    image: "/assets/aistudio/Screenshot_From_2026-11-16_22-15-14_42dcaef0.png",
+    imageAlt: "PayHold mobile escrow sign-in screen showing Deliver Safely. Pay Confidently.",
+    imageClass: "origin-left scale-[1.03] object-cover object-[20%_top] group-hover:scale-[1.05]",
+    href: "https://payhold.vercel.app",
+    githubUrl: "https://github.com/jayraidxyz",
   },
   {
-    name: "CasualCrave",
-    tag: "Early access",
-    text: "A mood-powered discovery platform, now in early access.",
-    stack: ["Next.js", "Mobile"],
-    href: null,
+    slug: "nsuk-spg-website",
+    name: "NSUK SPG Website",
+    tag: "Web platform",
+    text: "A dedicated web portal built for NSUK School of Postgraduate Studies with navigation, announcements, and resources.",
+    stack: ["Next.js", "Web"],
+    image: "/assets/aistudio/Screenshot_From_2026-11-17_03-15-43_67aaa0ff.png",
+    imageAlt: "NSUK SPG Website interface preview",
+    imageClass: "object-cover object-top group-hover:scale-[1.02]",
+    href: "https://spgs.nsuk.edu.ng/",
+    githubUrl: "https://github.com/jayraidxyz",
   },
   {
-    name: "Token Due-Diligence Dashboard",
-    tag: "In progress",
-    text: "A read-only Solana tool that checks a token's authorities and top holders. Built in public.",
-    stack: ["Next.js", "Solana", "web3.js"],
-    href: null,
+    slug: "feed-and-fodder-africa",
+    name: "Africa Feed & Fodder MSP",
+    tag: "Web platform",
+    text: "Multi-stakeholder web platform connecting feed and fodder partners and resources across Africa.",
+    stack: ["Next.js", "Web"],
+    image: "/assets/aistudio/Screenshot_From_2026-11-17_03-28-14_4c09bd27.png",
+    imageAlt: "Africa Feed and Fodder Multi Stakeholder Platform preview",
+    imageClass: "object-cover object-left-top group-hover:scale-[1.02]",
+    href: "https://feedandfodder.africa/",
+    githubUrl: "https://github.com/jayraidxyz",
   },
 ];
 
 export const services = [
   {
-    title: "Web apps",
-    text: "Fast, clean products and sites built with Next.js.",
-    points: ["Landing pages and marketing sites", "Dashboards and internal tools", "Payments and sign-in"],
-  },
-  {
-    title: "Mobile apps",
-    text: "Cross-platform apps with React Native and Expo.",
-    points: ["iOS and Android from one codebase", "Push notifications and sign-in", "App Store and Play Store launch"],
-  },
-  {
-    title: "Web3 integrations",
-    text: "Practical, safe blockchain features for real products.",
-    points: ["Wallet connect and read-only dashboards", "Token and on-chain data tools", "Monitoring and alerts, never holding your funds"],
+    title: "Full-stack web, mobile & Web3 apps",
+    text: "End-to-end products built with Next.js, React Native, and safe testnet-first Web3 integrations — shipped cleanly from idea to production.",
+    points: [
+      "Fast web apps, landing pages, and internal dashboards in Next.js",
+      "Cross-platform iOS & Android apps with React Native and Expo",
+      "Authentication, escrow/payment flows, and backend APIs",
+      "Read-only Web3 dashboards, wallet connect, and on-chain monitoring",
+    ],
   },
 ];
 

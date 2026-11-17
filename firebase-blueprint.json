@@ -1,0 +1,124 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "Authenticated user profile and cross-device unlock/subscription flags (PII isolated to document owner).",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": "Firebase Auth UID matching the document ID.",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_-]+$"
+        },
+        "displayName": {
+          "type": "string",
+          "description": "User display name from Google Sign-In.",
+          "minLength": 0,
+          "maxLength": 120
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "Verified email address from Google Sign-In.",
+          "minLength": 3,
+          "maxLength": 254
+        },
+        "photoURL": {
+          "type": "string",
+          "description": "Optional profile photo URL.",
+          "minLength": 0,
+          "maxLength": 500
+        },
+        "xFollowed": {
+          "type": "boolean",
+          "description": "Whether the user unlocked the Resources library via X follow."
+        },
+        "notesRequested": {
+          "type": "boolean",
+          "description": "Whether the user requested the free lecture notes."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp when the profile was created."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp when the profile was last updated."
+        }
+      },
+      "required": ["uid", "displayName", "email", "xFollowed", "notesRequested", "createdAt", "updatedAt"]
+    },
+    "PostProgress": {
+      "title": "PostProgress",
+      "description": "Per-user learning progress, bookmark, completion status, and personal study notes for a library post.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Owner Firebase Auth UID.",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_-]+$"
+        },
+        "slug": {
+          "type": "string",
+          "description": "Library post slug matching the document ID.",
+          "minLength": 1,
+          "maxLength": 100,
+          "pattern": "^[a-zA-Z0-9_-]+$"
+        },
+        "bookmarked": {
+          "type": "boolean",
+          "description": "Whether the post is bookmarked by the user."
+        },
+        "completed": {
+          "type": "boolean",
+          "description": "Whether the user marked this post as completed."
+        },
+        "lastSection": {
+          "type": "integer",
+          "description": "Zero-based index of the last active section."
+        },
+        "lastSlide": {
+          "type": "integer",
+          "description": "One-based index of the last viewed slide."
+        },
+        "note": {
+          "type": "string",
+          "description": "Personal study note for this post.",
+          "minLength": 0,
+          "maxLength": 1000
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp when progress tracking started."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp when progress was last saved."
+        }
+      },
+      "required": ["userId", "slug", "bookmarked", "completed", "lastSection", "lastSlide", "note", "createdAt", "updatedAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": {
+        "$ref": "#/entities/UserProfile"
+      },
+      "description": "Private user profile and cross-device preferences, readable and writable only by the owner."
+    },
+    "/users/{userId}/progress/{postSlug}": {
+      "schema": {
+        "$ref": "#/entities/PostProgress"
+      },
+      "description": "User-scoped subcollection tracking Watch & Read progress, bookmarks, and personal study notes per post."
+    }
+  }
+}
