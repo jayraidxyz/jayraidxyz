@@ -1,6 +1,6 @@
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
-import AuthGate from "@/components/AuthGate";
+import FollowGate from "@/components/FollowGate";
 import ResourcesContent from "@/components/ResourcesContent";
 
 export const metadata = {
@@ -13,9 +13,9 @@ export default function ResourcesPage() {
   return (
     <>
       <Nav />
-      <AuthGate>
+      <FollowGate>
         <ResourcesContent />
-      </AuthGate>
+      </FollowGate>
       <Footer />
     </>
   );

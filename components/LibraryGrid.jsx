@@ -2,16 +2,16 @@
 
 import { useMemo, useState } from "react";
 import PostCard from "./PostCard";
-import { useFirebase } from "@/components/FirebaseProvider";
+import { useAccess } from "@/components/AccessProvider";
 
 const BASE_FILTERS = ["All", "Explainer", "Carousel", "Reel"];
 
 export default function LibraryGrid({ posts }) {
-  const { user, progressMap } = useFirebase();
+  const { followed, progressMap } = useAccess();
   const [type, setType] = useState("All");
   const [q, setQ] = useState("");
 
-  const filters = user ? [...BASE_FILTERS, "Saved"] : BASE_FILTERS;
+  const filters = followed ? [...BASE_FILTERS, "Saved"] : BASE_FILTERS;
 
   const shown = useMemo(() => {
     const s = q.trim().toLowerCase();

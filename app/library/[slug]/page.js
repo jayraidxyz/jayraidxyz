@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
-import AuthGate from "@/components/AuthGate";
+import FollowGate from "@/components/FollowGate";
 import WatchReadStudio from "@/components/WatchReadStudio";
 import { library, formatDate } from "@/data/library";
 
@@ -40,7 +40,7 @@ export default async function PostPage({ params }) {
   return (
     <>
       <Nav />
-      <AuthGate>
+      <FollowGate>
         <WatchReadStudio post={post} formattedDate={formatDate(post.date)} />
         <div className="border-t border-white/10 bg-[#060B16]">
           <nav
@@ -68,7 +68,7 @@ export default async function PostPage({ params }) {
             )}
           </nav>
         </div>
-      </AuthGate>
+      </FollowGate>
       <Footer />
     </>
   );

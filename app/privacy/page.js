@@ -53,11 +53,9 @@ export default function PrivacyPage() {
 
           <Section title="What I collect">
             <p>
-              <strong className="text-white">Google sign-in (Resources library).</strong> To access the Resources page
-              and Watch &amp; Read posts you sign in with Google via Firebase Authentication. I receive your name, email
-              address, and profile picture from Google, and save your bookmarks, lesson progress, and study notes in
-              Firestore under your account. I do not receive your Google password, contacts, Drive files, or any other
-              Google data.
+              <strong className="text-white">Resources library access (X follow).</strong> To unlock the Resources page
+              and Watch &amp; Read posts you follow @{site.handle} on X and return to the site. No account registration,
+              email sign-up, or password is required, and I do not receive your X credentials or private account data.
             </p>
             <p>
               <strong className="text-white">Free notes sign-up.</strong> If you request the free PDF, I collect the email
@@ -72,8 +70,8 @@ export default function PrivacyPage() {
           <Section title="How I use it">
             <List
               items={[
-                "To authenticate you and keep the Resources library restricted to signed-in visitors",
-                "To save and sync your bookmarks, completed lessons, and personal study notes",
+                "To remember that you unlocked the Resources library so you don't have to repeat the X follow prompt on every visit",
+                "To store your bookmarks, lesson progress, and study notes locally in your browser",
                 "To send you the free notes and, if you opted in, occasional updates about new content",
                 "To keep the site secure and working",
               ]}
@@ -83,16 +81,16 @@ export default function PrivacyPage() {
 
           <Section title="Sessions and storage">
             <p>
-              Signing in via Firebase Authentication stores your session locally in your browser so you stay signed in
-              across visits. Your saved bookmarks, lesson progress, and study notes are stored privately under your user
-              record in Cloud Firestore. This site does not use advertising or third-party analytics cookies.
+              Your X follow unlock flag, saved bookmarks, lesson progress, and personal study notes are stored locally in
+              your browser via localStorage and a simple functional cookie. This site does not use advertising or
+              third-party analytics cookies.
             </p>
           </Section>
 
           <Section title="Who I share data with">
             <List
               items={[
-                "Google & Firebase: to authenticate you and store your account profile and learning progress.",
+                "X (Twitter): when you click through to follow @jayraidxyz, X handles that interaction under its own privacy policy.",
                 "My hosting provider: infrastructure and request delivery.",
                 "My email provider or automation tool: receives the email address you submit for the free notes, so I can deliver and send updates.",
               ]}
@@ -102,16 +100,17 @@ export default function PrivacyPage() {
 
           <Section title="Retention">
             <p>
-              Your account profile and study progress stay in Firestore until you request deletion. Email addresses
-              submitted for the free notes are kept until you unsubscribe or ask me to delete them.
+              Local browser storage stays in your browser until you clear site data or lock resources again from the
+              top-right menu. Email addresses submitted for the free notes are kept until you unsubscribe or ask me to
+              delete them.
             </p>
           </Section>
 
           <Section title="Your rights and choices">
             <p>
-              You can sign out at any time from your profile menu, unsubscribe from any email, and ask me to access,
-              correct or delete your data. Depending on where you live (including Nigeria under the NDPA, and the UK/EU
-              under GDPR), you may have additional legal rights. Contact me and I will respond promptly.
+              You can clear your browser storage or lock resources at any time, unsubscribe from any email, and ask me
+              to access, correct or delete your data. Depending on where you live (including Nigeria under the NDPA, and
+              the UK/EU under GDPR), you may have additional legal rights. Contact me and I will respond promptly.
             </p>
           </Section>
 

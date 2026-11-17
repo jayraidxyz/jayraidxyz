@@ -15,14 +15,13 @@ import {
   ExternalLink,
   Film,
   Layers,
-  LogIn,
   Pause,
   Play,
   Save,
   Volume2,
   VolumeX,
 } from "lucide-react";
-import { useFirebase } from "@/components/FirebaseProvider";
+import { useAccess } from "@/components/AccessProvider";
 import AccountStatus from "@/components/AccountStatus";
 
 function formatSeconds(sec) {
@@ -85,7 +84,7 @@ function ArticleBlock({ block }) {
 }
 
 export default function WatchReadStudio({ post, formattedDate }) {
-  const { user, progressMap, signInWithGoogle, savePostProgress } = useFirebase();
+  const { progressMap, savePostProgress } = useAccess();
   const savedProgress = progressMap[post.slug];
 
   const hasVideo = Boolean(post.video);
@@ -149,18 +148,14 @@ export default function WatchReadStudio({ post, formattedDate }) {
     const nextSec = sectionForSlide(wrapped);
     setSlide(wrapped);
     setActiveSection(nextSec);
-    if (user) {
-      savePostProgress(post.slug, { lastSlide: wrapped, lastSection: nextSec }).catch(() => {});
-    }
+    savePostProgress(post.slug, { lastSlide: wrapped, lastSection: nextSec }).catch(() => {});
   }
 
   function handleSelectSection(index) {
     const mappedSlide = slideForSection(index);
     setActiveSection(index);
     setSlide(mappedSlide);
-    if (user) {
-      savePostProgress(post.slug, { lastSection: index, lastSlide: mappedSlide }).catch(() => {});
-    }
+    savePostProgress(post.slug, { lastSection: index, lastSlide: mappedSlide }).catch(() => {});
     if (mode === "video" && videoRef.current && duration > 0 && sections.length > 0) {
       const targetTime = (index / sections.length) * duration;
       videoRef.current.currentTime = targetTime;
@@ -169,35 +164,15 @@ export default function WatchReadStudio({ post, formattedDate }) {
   }
 
   async function toggleBookmark() {
-    if (!user) {
-      await signInWithGoogle();
-      return;
-    }
-    try {
-      await savePostProgress(post.slug, { bookmarked: !savedProgress?.bookmarked });
-    } catch {
-      // Toast feedback is dispatched by FirebaseProvider
-    }
+    await savePostProgress(post.slug, { bookmarked: !savedProgress?.bookmarked });
   }
 
   async function toggleCompleted() {
-    if (!user) {
-      await signInWithGoogle();
-      return;
-    }
-    try {
-      await savePostProgress(post.slug, { completed: !savedProgress?.completed });
-    } catch {
-      // Toast feedback is dispatched by FirebaseProvider
-    }
+    await savePostProgress(post.slug, { completed: !savedProgress?.completed });
   }
 
   async function handleSaveStudyNote(e) {
     e.preventDefault();
-    if (!user) {
-      await signInWithGoogle();
-      return;
-    }
     setNoteStatus("saving");
     try {
       await savePostProgress(post.slug, { note: studyNote });
@@ -903,67 +878,50 @@ export default function WatchReadStudio({ post, formattedDate }) {
                 </div>
               ) : null}
 
-              {/* Tab 4: Personal Study Notes (Firestore Synced) */}
+              {/* Tab 4: Personal Study Notes */}
               {tab === "notes" ? (
                 <div className="mt-5">
-                  {user ? (
-                    <form onSubmit={handleSaveStudyNote} className="space-y-4">
-                      <div className="flex items-center justify-between gap-2">
-                        <label htmlFor="study-note-input" className="font-mono text-xs font-bold tracking-[0.14em] text-cyan">
-                          YOUR STUDY NOTES
-                        </label>
-                        <span className="font-mono text-[11px] tabular-nums text-muted">
-                          {studyNote.length} / 1000
-                        </span>
-                      </div>
-                      <textarea
-                        id="study-note-input"
-                        rows={5}
-                        maxLength={1000}
-                        value={studyNote}
-                        onChange={(e) => setStudyNote(e.target.value)}
-                        placeholder="Write key takeaways, testnet commands, or questions to revisit..."
-                        className="w-full rounded-xl border border-white/10 bg-[#070C17] p-4 text-sm leading-relaxed text-white placeholder:text-muted/60"
-                      />
-                      <div className="flex items-center justify-between gap-3">
-                        <span className="text-xs text-muted">
-                          Synced privately to your Google account.
-                        </span>
-                        <button
-                          type="submit"
-                          disabled={noteStatus === "saving"}
-                          className="inline-flex items-center gap-2 whitespace-nowrap shrink-0 rounded-xl bg-accent px-5 py-2.5 text-xs font-semibold text-white transition hover:bg-[#6470ff] disabled:opacity-60"
-                        >
-                          {noteStatus === "saved" ? (
-                            <>
-                              <Check className="h-3.5 w-3.5 text-cyan" />
-                              Saved
-                            </>
-                          ) : (
-                            <>
-                              <Save className="h-3.5 w-3.5" />
-                              {noteStatus === "saving" ? "Saving..." : "Save Note"}
-                            </>
-                          )}
-                        </button>
-                      </div>
-                    </form>
-                  ) : (
-                    <div className="rounded-xl border border-white/10 bg-[#070C17] p-6">
-                      <p className="font-medium text-white">Save personal notes &amp; progress</p>
-                      <p className="mt-2 text-sm leading-relaxed text-muted">
-                        Sign in with Google to bookmark posts, track completed lessons, and save personal study notes across devices.
-                      </p>
+                  <form onSubmit={handleSaveStudyNote} className="space-y-4">
+                    <div className="flex items-center justify-between gap-2">
+                      <label htmlFor="study-note-input" className="font-mono text-xs font-bold tracking-[0.14em] text-cyan">
+                        YOUR STUDY NOTES
+                      </label>
+                      <span className="font-mono text-[11px] tabular-nums text-muted">
+                        {studyNote.length} / 1000
+                      </span>
+                    </div>
+                    <textarea
+                      id="study-note-input"
+                      rows={5}
+                      maxLength={1000}
+                      value={studyNote}
+                      onChange={(e) => setStudyNote(e.target.value)}
+                      placeholder="Write key takeaways, testnet commands, or questions to revisit..."
+                      className="w-full rounded-xl border border-white/10 bg-[#070C17] p-4 text-sm leading-relaxed text-white placeholder:text-muted/60"
+                    />
+                    <div className="flex items-center justify-between gap-3">
+                      <span className="text-xs text-muted">
+                        Saved locally in your browser.
+                      </span>
                       <button
-                        type="button"
-                        onClick={signInWithGoogle}
-                        className="mt-4 inline-flex items-center gap-2 whitespace-nowrap shrink-0 rounded-full bg-accent px-5 py-2.5 text-xs font-semibold text-white transition hover:bg-[#6470ff]"
+                        type="submit"
+                        disabled={noteStatus === "saving"}
+                        className="inline-flex items-center gap-2 whitespace-nowrap shrink-0 rounded-xl bg-accent px-5 py-2.5 text-xs font-semibold text-white transition hover:bg-[#6470ff] disabled:opacity-60"
                       >
-                        <LogIn className="h-3.5 w-3.5" />
-                        Sign in with Google
+                        {noteStatus === "saved" ? (
+                          <>
+                            <Check className="h-3.5 w-3.5 text-cyan" />
+                            Saved
+                          </>
+                        ) : (
+                          <>
+                            <Save className="h-3.5 w-3.5" />
+                            {noteStatus === "saving" ? "Saving..." : "Save Note"}
+                          </>
+                        )}
                       </button>
                     </div>
-                  )}
+                  </form>
                 </div>
               ) : null}
             </section>

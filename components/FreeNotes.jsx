@@ -2,12 +2,10 @@
 
 import { useState } from "react";
 import { site } from "@/data/site";
-import { useFirebase } from "@/components/FirebaseProvider";
 import { useToast } from "@/components/ToastProvider";
 import { isNetworkError } from "@/lib/firebaseErrors";
 
 export default function FreeNotes() {
-  const { user, markNotesRequested } = useFirebase();
   const toast = useToast();
   const [email, setEmail] = useState("");
   const [company, setCompany] = useState(""); // honeypot, real people leave it empty
@@ -23,9 +21,6 @@ export default function FreeNotes() {
         body: JSON.stringify({ email, company }),
       });
       if (!res.ok) throw new Error(`Request failed (${res.status})`);
-      if (user) {
-        markNotesRequested().catch(() => {});
-      }
       setState("done");
     } catch (error) {
       setState("error");
